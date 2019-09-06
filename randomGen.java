@@ -1,4 +1,5 @@
 package randomgener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -120,25 +121,27 @@ public class randomGen {
 		// TODO Auto-generated method stub
 		Workbook wb = null; 
 		Sheet sh = null;
-		FileInputStream fis = null;
-			Connection con;
+	//	FileInputStream fis = null;
+//			Connection con;
 			try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("Driver loaded successfully");
-			con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","abcd123");
-            System.out.println("Connection done");
-            FileOutputStream out = new FileOutputStream("./orders.xlsx");
-            out.close();
-		fis= new FileInputStream("./orders.xlsx");
-			System.out.println(fis.getFD());
-			wb = WorkbookFactory.create(fis);
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			System.out.println("Driver loaded successfully");
+//			con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","abcd123");
+//          System.out.println("Connection done");
+         //   fis= new FileInputStream("./orders.xlsx");
+		//	System.out.println(fis.getFD());
+            String excelFilePath = "./orders.xlsx";
+            FileInputStream fis = new FileInputStream(new File(excelFilePath));
+             
+				wb = WorkbookFactory.create(fis);
+
+	        sh = wb.getSheet("Sheet1");
 			fis.close();
 			fis=null;
 			 Row row;
 			 Cell cell;
-			sh = wb.getSheet("Sheet1");
-		PreparedStatement ps1 =con.prepareStatement("delete from orders");
-	    ps1.executeUpdate();
+//		PreparedStatement ps1 =con.prepareStatement("delete from orders");
+	//    ps1.executeUpdate();
 	        row = sh.createRow(0);
 	        cell= row.createCell(0);
 	        cell.setCellValue("order_id");
@@ -183,10 +186,10 @@ for(int i=0;i<3000;i++) {
 
 	if (i%15 == 0)
 		Thread.sleep(2000);
-	
-		}
+}
+		
 			}catch (FileNotFoundException e2) {
-				// TODO Auto-generated catch block
+							// TODO Auto-generated catch block
 				e2.printStackTrace();
 			} catch (EncryptedDocumentException e2) {
 				// TODO Auto-generated catch block
@@ -195,12 +198,6 @@ for(int i=0;i<3000;i++) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
