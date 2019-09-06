@@ -20,6 +20,7 @@ public class AddOrderServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String user_id = "Amit";
 		String category = req.getParameter("Buy/Sell");
 		int quantity=Integer.parseInt(req.getParameter("Quantity"));
 		String type = req.getParameter("type");
@@ -27,8 +28,8 @@ public class AddOrderServlet extends HttpServlet {
 		String fill=req.getParameter("fill");
 		
 		OrderDAO dao= new OrderDAOImpl();
-		int rows=dao.addOrder(new Order(category_of_order, Quantity, type_of_order, price, fill));
-		System.out.println(category_of_order+ ":" +Quantity+ ":" +type_of_order +":" +price+ ":" +fill);
+		int rows=dao.addOrder(new Order(user_id, category, quantity, type, price, fill));
+		System.out.println(user_id+ ":" +category+ ":" +quantity+ ":" +type +":" +price+ ":" +fill);
 		
 		if(rows>0)
 		{

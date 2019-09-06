@@ -32,16 +32,16 @@ public class OrderDAOImpl implements OrderDAO {
 			
 			System.out.println("Connection obtained");
 					
-			String INSERT_ORDER="Insert into orders values(?,?,?,?,?,?,?,?,?)";
+			String INSERT_ORDER="Insert into orders values(?,?,?,?,?,?,?,?)";
 			PreparedStatement ps=openConnection().prepareStatement(INSERT_ORDER);
 		
 			
 		    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		    ps.setString(1, order.getUser_id());
 			ps.setInt(2, order.getOrder_id());
-			ps.setString(3, order.getCategory_of_order());
+			ps.setString(3, order.getCategory());
 			ps.setInt(4, order.getQuantity());
-			ps.setString(5, order.getType_of_order());
+			ps.setString(5, order.getType());
 			ps.setDouble(6, order.getPrice());
 			ps.setString(7, order.getFill());
 			ps.setTimestamp(8, timestamp);
