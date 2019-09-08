@@ -14,7 +14,7 @@ public class OrderDAOImpl implements OrderDAO {
 	{
 		Connection connection=null;
 		try {
-			connection=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "abc123");
+			connection=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "abcd123");
 		} catch(SQLException e)
 		{
 			e.printStackTrace();

@@ -23,13 +23,19 @@
 	}
 	
 	function disable() {
-		document.getElementById("all_btn").disabled="true";
-		document.getElementById("partial_btn").disabled="true";
+		document.getElementById("all_btn").disabled=true;
+		document.getElementById("partial_btn").disabled=true;
 	}
 	
-	var price = document.getElementById("price_val");
-	price.setAttribute("max",100);
-	price.setAttribute("min", 95);
+	function enable() {
+		document.getElementById("all_btn").disabled=false;
+		document.getElementById("partial_btn").disabled=false;
+	}
+	
+	function max_min() {
+		document.getElementById("price_val").min="5";
+		document.getElementById("price_val").max="100";
+	}
 </script>
 <meta charset="ISO-8859-1">
 <title>Place order</title>
@@ -69,13 +75,13 @@ background-color : Plum;
   <input type="text" name="Quantity" min="1" max="1000" required><br>
   <br>
   Type of Order : <br>
-  <input type="radio" onclick="javascript:hideLimit(); javascript:disable();" name="type" value="Market" checked required> Market<br>
-  <input type="radio" onclick="javascript:showLimit();" name="type" value="Limit" required> Limit<br>
+  <input type="radio" onclick="javascript:hideLimit(); javascript:disable();" name="type" value="Market" required> Market<br>
+  <input type="radio" onclick="javascript:showLimit(); javascript:enable(); javascript:max_min();" name="type" value="Limit" required> Limit<br>
   <br>
   
   <div id="price">
   	Price : <br> 
-  <input type="text" id="price_val" name="Price" value="0" max="*jsvariable*" min="*jsvariable*" required><br>
+  <input type="number" id="price_val" name="Price" value="0" required><br>
   <br>
   </div>
   

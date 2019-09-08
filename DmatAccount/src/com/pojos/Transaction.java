@@ -10,12 +10,15 @@ public class Transaction {
 	private int sell_order_id;
 	private String  buyer_user_id;
 	private String seller_user_id;
+	
 	public int getTransaction_id() {
 		return transaction_id;
 	}
+	
 	public void setTransaction_id(int transaction_id) {
 		this.transaction_id = transaction_id;
 	}
+	
 	private int quantity;
 	private int ISIN;
 	private Timestamp timestamp;
